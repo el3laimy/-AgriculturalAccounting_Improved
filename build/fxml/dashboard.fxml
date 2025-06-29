@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.DashboardController">
+   <content>
+      <VBox spacing="20.0" style="-fx-background-color: transparent;">
+         <children>
+            <FlowPane hgap="20.0" prefWrapLength="1200.0" vgap="20.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="stat-card">
+                     <children>
+                        <VBox styleClass="stat-icon-container, success-bg">
+                           <children><FontIcon iconLiteral="fa-arrow-down" styleClass="stat-icon" /></children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="stat-label" text="إجمالي الإيرادات" />
+                              <Label fx:id="totalRevenueLabel" styleClass="stat-value" text="0.00" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="stat-card">
+                     <children>
+                        <VBox styleClass="stat-icon-container, danger-bg">
+                           <children><FontIcon iconLiteral="fa-arrow-up" styleClass="stat-icon" /></children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="stat-label" text="إجمالي المصروفات" />
+                              <Label fx:id="totalExpensesLabel" styleClass="stat-value" text="0.00" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="stat-card">
+                     <children>
+                        <VBox styleClass="stat-icon-container, accent-bg">
+                           <children><FontIcon iconLiteral="fa-balance-scale" styleClass="stat-icon" /></children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="stat-label" text="صافي الربح (السنة)" />
+                              <Label fx:id="netProfitLabel" styleClass="stat-value" text="0.00" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="stat-card">
+                     <children>
+                         <VBox styleClass="stat-icon-container, warning-bg">
+                           <children><FontIcon iconLiteral="fa-archive" styleClass="stat-icon" /></children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="stat-label" text="قيمة المخزون" />
+                              <Label fx:id="inventoryValueLabel" styleClass="stat-value" text="0.00" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </FlowPane>
+
+            <HBox spacing="20.0">
+               <children>
+                  <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                     <children>
+                        <BarChart fx:id="monthlySalesChart" title="المبيعات الشهرية">
+                          <xAxis><CategoryAxis fx:id="salesXAxis" side="BOTTOM" /></xAxis>
+                          <yAxis><NumberAxis fx:id="salesYAxis" side="LEFT" /></yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+                  <VBox minWidth="350.0" styleClass="card">
+                     <children>
+                        <PieChart fx:id="cropDistributionChart" title="توزيع قيمة المخزون" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </content>
+</ScrollPane>

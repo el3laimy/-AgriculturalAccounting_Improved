@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.InventoryAdjustmentController">
+   <children>
+      <VBox spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Label text="تسوية مخزون" styleClass="title">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <GridPane hgap="10.0" vgap="10.0">
+               <children>
+                  <Label text="المحصول:" GridPane.rowIndex="0" />
+                  <ComboBox fx:id="cropComboBox" prefWidth="350.0" promptText="اختر المحصول" GridPane.columnIndex="1" />
+                  
+                  <Label text="تاريخ التسوية:" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="adjustmentDatePicker" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <Label text="نوع التسوية:" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="adjustmentTypeComboBox" prefWidth="350.0" promptText="اختر نوع التسوية" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                  <Label text="الكمية (كجم):" GridPane.rowIndex="3" />
+                  <TextField fx:id="quantityField" promptText="أدخل الكمية بالكجم" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                  <Label text="السبب:" GridPane.rowIndex="4" />
+                  <TextArea fx:id="reasonArea" prefHeight="70.0" promptText="(اختياري)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSave" text="حفظ التسوية" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancel" styleClass="danger" text="إلغاء" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

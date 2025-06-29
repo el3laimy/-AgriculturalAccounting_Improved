@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefWidth="500.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.CropFormController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <GridPane hgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="اسم المحصول:" />
+                        <TextField fx:id="cropNameField" GridPane.columnIndex="1" />
+                    </children>
+                </GridPane>
+                <Label text="وحدات التسعير ومعاملات التحويل (بالكيلوجرام):" />
+                <TableView fx:id="unitsTable" editable="true" prefHeight="200.0">
+                    <columns>
+                        <TableColumn fx:id="unitNameColumn" prefWidth="200.0" text="اسم الوحدة (مثال: أردب)" />
+                        <TableColumn fx:id="conversionFactorColumn" prefWidth="230.0" text="تساوي كم كيلو جرام؟ (مثال: 150.0)" />
+                    </columns>
+                </TableView>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button onAction="#handleAddUnit" text="إضافة وحدة جديدة" />
+                        <Button onAction="#handleRemoveUnit" styleClass="danger" text="حذف الوحدة المحددة" />
+                    </children>
+                </HBox>
+                <HBox alignment="BOTTOM_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button onAction="#handleSave" styleClass="success" text="حفظ" />
+                        <Button onAction="#handleCancel" styleClass="secondary" text="إلغاء" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" styleClass="card" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.SaleFormController">
+   <children>
+      <GridPane hgap="10.0" vgap="10.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="تاريخ البيع:" GridPane.rowIndex="0" />
+            <DatePicker fx:id="saleDatePicker" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            
+            <Label text="العميل:" GridPane.rowIndex="1" />
+            <ComboBox fx:id="customerComboBox" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            
+            <Label text="المحصول:" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cropComboBox" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
+            <Label text="الكمية (كجم):" GridPane.rowIndex="3" />
+            <TextField fx:id="quantityKgField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            
+            <Label text="وحدة التسعير:" GridPane.rowIndex="4" />
+            <ComboBox fx:id="pricingUnitComboBox" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            
+            <Label text="سعر الوحدة:" GridPane.rowIndex="5" />
+            <TextField fx:id="unitPriceField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            
+            <Label text="المبلغ الإجمالي:" GridPane.rowIndex="6" />
+            <TextField fx:id="totalAmountField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            
+            <Label text="رقم الفاتورة:" GridPane.rowIndex="7" />
+            <TextField fx:id="invoiceNumberField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            
+            <Label text="الإيداع في حساب:" GridPane.rowIndex="8" />
+            <ComboBox fx:id="paymentAccountComboBox" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
+            <Label text="المبلغ المقبوض:" GridPane.rowIndex="9" />
+            <TextField fx:id="amountReceivedField" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER_LEFT" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Button onAction="#handleSave" prefWidth="80.0" text="حفظ" />
+            <Button onAction="#handleCancel" prefWidth="80.0" styleClass="danger" text="إلغاء" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

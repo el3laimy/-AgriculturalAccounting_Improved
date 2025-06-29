@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ContactLedgerController">
+   <top>
+      <VBox styleClass="ledger-header">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label fx:id="contactNameLabel" styleClass="ledger-title" text="كشف حساب: " />
+                  <Button fx:id="addPaymentButton" mnemonicParsing="false" onAction="#handleAddPayment" styleClass="success" text="إضافة دفعة..." />
+               </children>
+            </HBox>
+            <Label fx:id="contactTypeLabel" styleClass="ledger-subtitle" text="النوع:" />
+            <Label fx:id="balanceLabel" styleClass="ledger-balance" text="الرصيد النهائي:" />
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TableView fx:id="ledgerTable" prefHeight="200.0" prefWidth="200.0" styleClass="ledger-table" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="100.0" text="التاريخ" />
+          <TableColumn fx:id="descriptionColumn" prefWidth="250.0" text="البيان" />
+          <TableColumn fx:id="referenceColumn" prefWidth="120.0" text="المرجع/الفاتورة" />
+          <TableColumn fx:id="debitColumn" prefWidth="120.0" text="مستحق عليه" />
+          <TableColumn fx:id="creditColumn" prefWidth="120.0" text="مستحق له" />
+          <TableColumn fx:id="balanceColumn" prefWidth="120.0" text="الرصيد" />
+        </columns>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+</BorderPane>
