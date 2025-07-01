@@ -18,8 +18,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 
 public class MainController implements Initializable {
+    private static final Logger LOGGER = Logger.getLogger(MainController.class.getName());
 
     // --- عناصر الواجهة الجديدة ---
     @FXML private VBox sideNavigationBar;
@@ -36,6 +40,7 @@ public class MainController implements Initializable {
     @FXML private Button contactsBtn;
     @FXML private Button generalLedgerBtn;
     @FXML private Button reportsBtn;
+    @FXML private Button alertsBtn; // New button for Alerts
     // Removed settingsBtn as it's replaced by a MenuButton
 
     // --- New MenuButtons and MenuItems ---
@@ -94,9 +99,31 @@ public class MainController implements Initializable {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
-            // يمكنك عرض رسالة خطأ هنا
+            LOGGER.log(Level.SEVERE, "Failed to load FXML view: " + fxmlPath, e);
+            showErrorAlert("خطأ في تحميل الواجهة",
+                           "لم يتم تحميل الواجهة المطلوبة (" + title + "). قد يكون الملف مفقوداً أو تالفاً.\n" +
+                           "الرجاء مراجعة سجلات البرنامج لمزيد من التفاصيل.");
+            // Optionally, load a default error view or clear the content area
+            contentArea.getChildren().clear();
+            viewTitleLabel.setText("خطأ");
+        } catch (Exception e) { // Catch any other unexpected errors during view loading
+            LOGGER.log(Level.SEVERE, "Unexpected error loading FXML view: " + fxmlPath, e);
+            showErrorAlert("خطأ غير متوقع",
+                           "حدث خطأ غير متوقع أثناء محاولة تحميل الواجهة: " + title + ".");
+            contentArea.getChildren().clear();
+            viewTitleLabel.setText("خطأ");
         }
+    }
+
+    private void showErrorAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        // It's good practice to set the owner if this alert can pop up without a clear parent stage context
+        // However, in MainController, contentArea.getScene().getWindow() might be null if called too early
+        // or if the scene isn't fully set up. For now, not setting owner here.
+        alert.showAndWait();
     }
 
     // Existing handlers
@@ -108,6 +135,9 @@ public class MainController implements Initializable {
     @FXML private void handleManageContacts() { loadView("ContactManagement.fxml", "جهات التعامل", contactsBtn); }
     @FXML private void handleViewGeneralLedger() { loadView("GeneralLedgerView.fxml", "دفتر الأستاذ العام", generalLedgerBtn); }
     @FXML private void showReportsDashboard() { loadView("ReportsDashboard.fxml", "التقارير المتقدمة", reportsBtn); }
+
+    // Handler for the new Alerts button
+    @FXML private void handleShowAlerts() { loadView("AlertsView.fxml", "التنبيهات", alertsBtn); }
     // Removed handleSettings as it's replaced by MenuButton items
 
     // --- New Handlers for MenuItems ---

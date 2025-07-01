@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="10.0" styleClass="card" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ForecastReportController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label text="تقرير التوقعات المالية" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -fx-text-primary;">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="10.0" />
+            </VBox.margin>
+        </Label>
+        <TextArea fx:id="forecastOutputArea" editable="false" prefHeight="400.0" prefWidth="600.0" wrapText="true" VBox.vgrow="ALWAYS" />
+    </children>
+</VBox>

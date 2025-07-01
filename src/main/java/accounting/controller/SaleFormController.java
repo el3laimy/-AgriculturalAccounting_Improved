@@ -139,16 +139,29 @@ public class SaleFormController {
             FinancialAccount paymentAccount = paymentAccountComboBox.getValue();
 
             try {
-                if (sale.getSaleId() == 0) {
+                if (sale.getSaleId() == 0) { // New Sale
                     saleDataService.addSale(sale, paymentAccount, amountReceived);
-                } else {
-                    // منطق التعديل سيضاف هنا لاحقاً
+                } else { // Existing Sale - Update
+                    // For update, we pass the sale object.
+                    // The SaleDataService.updateSale method will need to handle
+                    // the logic, including fetching the original record if needed for comparisons
+                    // and determining how to handle financial adjustments.
+                    // As per earlier discussion, paymentAccount and amountReceived are currently
+                    // disabled for edits in this form, simplifying this call.
+                    // If they were enabled, they would be passed here too.
+                    saleDataService.updateSale(sale);
                 }
                 okClicked = true;
                 dialogStage.close();
             } catch (SQLException e) {
+                // Consider adding more specific error logging using Logger
+                // LOGGER.log(Level.SEVERE, "Error saving sale.", e);
+                e.printStackTrace(); // Keep for debugging during development
+                showErrorAlert("خطأ في الحفظ", "فشل حفظ بيانات البيع: " + e.getMessage());
+            } catch (Exception e) { // Catch unexpected errors
+                // LOGGER.log(Level.SEVERE, "Unexpected error saving sale.", e);
                 e.printStackTrace();
-                showErrorAlert("خطأ في الحفظ", "فشل حفظ بيانات البيع.\n" + e.getMessage());
+                showErrorAlert("خطأ غير متوقع", "حدث خطأ غير متوقع أثناء حفظ بيانات البيع.");
             }
         }
     }

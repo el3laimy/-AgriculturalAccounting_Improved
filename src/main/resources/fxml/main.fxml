@@ -44,6 +44,10 @@
                <graphic><FontIcon iconLiteral="fa-line-chart" /></graphic>
             </Button>
 
+            <Button fx:id="alertsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleShowAlerts" text="التنبيهات">
+                <graphic><FontIcon iconLiteral="fa-bell" /></graphic>
+            </Button>
+
             <Label text="الإدارة والتقارير" style="-fx-text-fill: #95a5a6; -fx-padding: 15 0 5 0;" />
             <javafx.scene.control.MenuButton fx:id="financialReportsMenuBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" text="التقارير المالية" styleClass="navigation-menu-button">
               <graphic><FontIcon iconLiteral="fa-file-text-o" /></graphic>
