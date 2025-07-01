@@ -71,6 +71,75 @@
 }
 .side-navigation-bar .button.active .font-icon { -fx-fill: white; }
 
+/* --- أزرار القائمة المنسدلة في شريط التنقل --- */
+.navigation-menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7; /* لون رمادي فاتح للنص */
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-pref-width: 200px;
+    -fx-padding: 10 20;
+    -fx-border-width: 0;
+    -fx-mark-color: #bdc3c7; /* لون سهم القائمة المنسدلة */
+}
+
+.navigation-menu-button .label {
+    -fx-text-fill: #bdc3c7; /* لضمان لون النص داخل الزر */
+}
+
+.navigation-menu-button .arrow {
+    -fx-background-color: #bdc3c7; /* لون السهم */
+}
+
+.navigation-menu-button .font-icon {
+    -fx-fill: #bdc3c7;
+    -fx-font-size: 1.5em;
+}
+
+.navigation-menu-button:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #34495e88;
+    -fx-background-radius: 8px;
+}
+
+.navigation-menu-button:hover .label {
+    -fx-text-fill: white; /* تغيير لون النص عند التحويم */
+}
+
+.navigation-menu-button:hover .font-icon { -fx-fill: white; }
+.navigation-menu-button:hover .arrow { -fx-background-color: white; }
+
+
+.navigation-menu-button:showing {
+    /* يمكنك إضافة أنماط خاصة عندما تكون القائمة مفتوحة إذا أردت */
+}
+
+/* --- تخصيص عناصر القائمة المنسدلة --- */
+.context-menu {
+    -fx-background-color: #2c3e50; /* خلفية داكنة للقائمة */
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 0 5 5, 0 0 4 4, 0 0 3 3;
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-padding: 0.5em 1em 0.5em 1em; /* تباعد داخلي للعناصر */
+}
+
+.menu-item .label {
+    -fx-text-fill: #bdc3c7; /* لون النص لعناصر القائمة */
+    -fx-font-size: 13px;
+}
+
+.menu-item:focused {
+    -fx-background-color: #34495e; /* لون خلفية العنصر عند التركيز/التحويم */
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white; /* لون النص للعنصر عند التركيز/التحويم */
+}
+
 
 /* --- البطاقات العامة --- */
 .card {

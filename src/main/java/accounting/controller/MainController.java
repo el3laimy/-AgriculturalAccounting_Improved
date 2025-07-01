@@ -36,7 +36,17 @@ public class MainController implements Initializable {
     @FXML private Button contactsBtn;
     @FXML private Button generalLedgerBtn;
     @FXML private Button reportsBtn;
-    @FXML private Button settingsBtn;
+    // Removed settingsBtn as it's replaced by a MenuButton
+
+    // --- New MenuButtons and MenuItems ---
+    @FXML private javafx.scene.control.MenuButton financialReportsMenuBtn;
+    @FXML private MenuItem trialBalanceMenuItem;
+    @FXML private MenuItem incomeStatementMenuItem;
+    @FXML private MenuItem balanceSheetMenuItem;
+
+    @FXML private javafx.scene.control.MenuButton settingsMenuBtn;
+    @FXML private MenuItem cropManagementMenuItem;
+    @FXML private MenuItem financialAccountManagementMenuItem;
     
     private Button currentActiveButton;
     private Timer statusTimer;
@@ -70,11 +80,18 @@ public class MainController implements Initializable {
             viewTitleLabel.setText(title);
             
             // تحديث حالة الزر النشط
-            if (currentActiveButton != null) {
-                currentActiveButton.getStyleClass().remove("active");
+            if (activeButton != null) {
+                if (currentActiveButton != null) {
+                    currentActiveButton.getStyleClass().remove("active");
+                }
+                currentActiveButton = activeButton;
+                currentActiveButton.getStyleClass().add("active");
+            } else { // A MenuItem was clicked, so no button should be active
+                 if (currentActiveButton != null) {
+                    currentActiveButton.getStyleClass().remove("active");
+                    currentActiveButton = null;
+                }
             }
-            currentActiveButton = activeButton;
-            currentActiveButton.getStyleClass().add("active");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,6 +99,7 @@ public class MainController implements Initializable {
         }
     }
 
+    // Existing handlers
     @FXML private void showDashboard() { loadView("Dashboard.fxml", "لوحة التحكم", dashboardBtn); }
     @FXML private void showPurchases() { loadView("Purchases.fxml", "المشتريات", purchasesBtn); }
     @FXML private void showSales() { loadView("Sales.fxml", "المبيعات", salesBtn); }
@@ -90,8 +108,14 @@ public class MainController implements Initializable {
     @FXML private void handleManageContacts() { loadView("ContactManagement.fxml", "جهات التعامل", contactsBtn); }
     @FXML private void handleViewGeneralLedger() { loadView("GeneralLedgerView.fxml", "دفتر الأستاذ العام", generalLedgerBtn); }
     @FXML private void showReportsDashboard() { loadView("ReportsDashboard.fxml", "التقارير المتقدمة", reportsBtn); }
-    @FXML private void handleSettings() { /* لا يوجد واجهة بعد */ }
+    // Removed handleSettings as it's replaced by MenuButton items
 
+    // --- New Handlers for MenuItems ---
+    @FXML private void handleShowTrialBalance() { loadView("TrialBalanceView.fxml", "ميزان المراجعة", null); }
+    @FXML private void handleShowIncomeStatement() { loadView("IncomeStatementView.fxml", "قائمة الدخل", null); }
+    @FXML private void handleShowBalanceSheet() { loadView("BalanceSheetView.fxml", "الميزانية العمومية", null); }
+    @FXML private void handleShowCropManagement() { loadView("CropManagement.fxml", "إدارة المحاصيل", null); }
+    @FXML private void handleShowFinancialAccountManagement() { loadView("FinancialAccountManagement.fxml", "إدارة الحسابات المالية", null); }
 
     public void cleanup() {
         if (statusTimer != null) {

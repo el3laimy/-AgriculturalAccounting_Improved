@@ -43,10 +43,26 @@
             <Button fx:id="reportsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#showReportsDashboard" text="التقارير المتقدمة">
                <graphic><FontIcon iconLiteral="fa-line-chart" /></graphic>
             </Button>
+
+            <Label text="الإدارة والتقارير" style="-fx-text-fill: #95a5a6; -fx-padding: 15 0 5 0;" />
+            <javafx.scene.control.MenuButton fx:id="financialReportsMenuBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" text="التقارير المالية" styleClass="navigation-menu-button">
+              <graphic><FontIcon iconLiteral="fa-file-text-o" /></graphic>
+              <items>
+                <javafx.scene.control.MenuItem fx:id="trialBalanceMenuItem" mnemonicParsing="false" onAction="#handleShowTrialBalance" text="ميزان المراجعة" />
+                <javafx.scene.control.MenuItem fx:id="incomeStatementMenuItem" mnemonicParsing="false" onAction="#handleShowIncomeStatement" text="قائمة الدخل" />
+                <javafx.scene.control.MenuItem fx:id="balanceSheetMenuItem" mnemonicParsing="false" onAction="#handleShowBalanceSheet" text="الميزانية العمومية" />
+              </items>
+            </javafx.scene.control.MenuButton>
+
+            <javafx.scene.control.MenuButton fx:id="settingsMenuBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" text="الإعدادات" styleClass="navigation-menu-button">
+              <graphic><FontIcon iconLiteral="fa-cogs" /></graphic>
+              <items>
+                <javafx.scene.control.MenuItem fx:id="cropManagementMenuItem" mnemonicParsing="false" onAction="#handleShowCropManagement" text="إدارة المحاصيل" />
+                <javafx.scene.control.MenuItem fx:id="financialAccountManagementMenuItem" mnemonicParsing="false" onAction="#handleShowFinancialAccountManagement" text="إدارة الحسابات المالية" />
+              </items>
+            </javafx.scene.control.MenuButton>
+
             <VBox VBox.vgrow="ALWAYS" />
-            <Button fx:id="settingsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" text="الإعدادات">
-               <graphic><FontIcon iconLiteral="fa-cog" /></graphic>
-            </Button>
          </children>
       </VBox>
    </right>
